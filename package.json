@@ -3,13 +3,17 @@
   "version": "1.0.0",
   "scripts": {
     "build": "cd client && npm install && npm run build",
+    "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
     "postinstall": "prisma generate --schema=./server/prisma/schema.prisma"
   },
   "dependencies": {
-    "express": "^4.19.2",
+    "@prisma/client": "^5.12.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
-    "@prisma/client": "^5.12.1",
+    "express": "^4.19.2",
     "prisma": "^5.12.1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
   }
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ExpenseForm from './components/ExpenseForm';
 import ExpenseList from './components/ExpenseList';
+import Sidebar from './components/Sidebar';
 
 function App() {
   const [expenses, setExpenses] = useState([]);
@@ -51,14 +52,19 @@ function App() {
   };
 
   return (
-    <div className="container">
-      <header className="header">
-        <h1>Expense Tracker</h1>
-        <p style={{ color: 'var(--text-secondary)' }}>Track your spending with intention</p>
-      </header>
+    <div className="app-layout">
+      <Sidebar />
+      <main className="main-content">
+        <div className="container">
+          <header className="header">
+            <h1>Expense Tracker</h1>
+            <p style={{ color: 'var(--text-secondary)' }}>Track your spending with intention</p>
+          </header>
 
-      <ExpenseForm onAddExpense={addExpense} />
-      <ExpenseList expenses={expenses} onDeleteExpense={deleteExpense} />
+          <ExpenseForm onAddExpense={addExpense} />
+          <ExpenseList expenses={expenses} onDeleteExpense={deleteExpense} />
+        </div>
+      </main>
     </div>
   );
 }
