@@ -19,7 +19,8 @@ app.get('/api/expenses', async (req, res) => {
     });
     res.json(expenses);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch expenses' });
+    console.error('Error fetching expenses:', error);
+    res.status(500).json({ error: 'Failed to fetch expenses', details: error.message });
   }
 });
 
@@ -36,7 +37,8 @@ app.post('/api/expenses', async (req, res) => {
     });
     res.json(expense);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to create expense' });
+    console.error('Error creating expense:', error);
+    res.status(500).json({ error: 'Failed to create expense', details: error.message });
   }
 });
 
@@ -51,7 +53,8 @@ app.delete('/api/expenses/:id', async (req, res) => {
     });
     res.json({ message: 'Expense deleted' });
   } catch (error) {
-    res.status(500).json({ error: 'Failed to delete expense' });
+    console.error('Error deleting expense:', error);
+    res.status(500).json({ error: 'Failed to delete expense', details: error.message });
   }
 });
 

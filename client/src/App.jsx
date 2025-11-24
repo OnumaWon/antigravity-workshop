@@ -12,10 +12,14 @@ function App() {
   const fetchExpenses = async () => {
     try {
       const response = await fetch('/api/expenses');
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
       const data = await response.json();
-      setExpenses(data);
+      setExpenses(Array.isArray(data) ? data : []);
     } catch (error) {
       console.error('Error fetching expenses:', error);
+      setExpenses([]); // Ensure expenses is always an array
     }
   };
 
