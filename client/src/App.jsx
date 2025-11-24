@@ -11,7 +11,7 @@ function App() {
 
   const fetchExpenses = async () => {
     try {
-      const response = await fetch('http://localhost:3000/api/expenses');
+      const response = await fetch('/api/expenses');
       const data = await response.json();
       setExpenses(data);
     } catch (error) {
@@ -21,7 +21,7 @@ function App() {
 
   const addExpense = async (expense) => {
     try {
-      const response = await fetch('http://localhost:3000/api/expenses', {
+      const response = await fetch('/api/expenses', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ function App() {
 
   const deleteExpense = async (id) => {
     try {
-      await fetch(`http://localhost:3000/api/expenses/${id}`, {
+      await fetch(`/api/expenses/${id}`, {
         method: 'DELETE',
       });
       setExpenses(expenses.filter((expense) => expense.id !== id));

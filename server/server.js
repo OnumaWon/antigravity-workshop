@@ -55,6 +55,13 @@ app.delete('/api/expenses/:id', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+
+// Export the app for Vercel
+module.exports = app;
+
+// Only run the server if this file is the main module (local development)
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+  });
+}
